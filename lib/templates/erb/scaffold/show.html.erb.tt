@@ -1,10 +1,30 @@
-<p style="color: green"><%%= notice %></p>
+<div class="container-fluid">
+  <p id="notice"><%%= notice %></p>
 
-<%%= render @<%= singular_table_name %> %>
+  <% attributes.reject(&:password_digest?).each do |attribute| -%>
+  <% if attribute.attachment? -%>
+  <div class="form-group mb-3">
+    <p><strong><%= attribute.human_name %>:</strong></p>
+    <%%= link_to @<%= singular_table_name %>.<%= attribute.column_name %>.filename, @<%= singular_table_name %>.<%= attribute.column_name %> if @<%= singular_table_name %>.<%= attribute.column_name %>.attached? %>
+  </div>
+  <% elsif attribute.attachments? -%>
+  <div class="form-group mb-3">
+    <p><strong><%= attribute.human_name %>:</strong></p>
+    <%% @<%= singular_table_name %>.<%= attribute.column_name %>.each do |<%= attribute.singular_name %>| %>
+      <div><%%= link_to <%= attribute.singular_name %>.filename, <%= attribute.singular_name %> %></div>
+    <%% end %>
+  </div>
+  <% else -%>
+  <div class="form-group mb-3">
+    <p><strong><%= attribute.human_name %>:</strong></p>
+    <div>
+      <%%= @<%= singular_table_name %>.<%= attribute.column_name %> %>
+    </div>
+  </div>
+  <% end -%>
 
-<div>
-  <%%= link_to "Edit this <%= human_name.downcase %>", <%= edit_helper(type: :path) %> %> |
-  <%%= link_to "Back to <%= human_name.pluralize.downcase %>", <%= index_helper(type: :path) %> %>
+  <% end -%>
 
-  <%%= button_to "Destroy this <%= human_name.downcase %>", <%= model_resource_name(prefix: "@") %>, method: :delete %>
+  <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-primary min-width-btn" %>
+  <%%= link_to 'Back', <%= index_helper %>_path, class: "btn btn-light min-width-btn" %>
 </div>

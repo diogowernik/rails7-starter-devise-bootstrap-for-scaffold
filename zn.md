@@ -25,4 +25,6 @@
 
 ## creating custom scaffold
 
-## create scaffold for
+## create scaffold for portfolios
+
+    rails generate scaffold Portfolio name:string
