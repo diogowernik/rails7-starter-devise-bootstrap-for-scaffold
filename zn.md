@@ -14,3 +14,13 @@
     rails generate devise User
     rails generate devise:views:bootstrap
     rails generate devise:i18n:views
+
+## create home page
+
+    rails generate controller Pages home
+
+## migrations
+
+    rails db:migrate
+
+## creating custom scaffold
