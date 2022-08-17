@@ -73,3 +73,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "devise", "~> 4.8"
+
+gem "devise-i18n", "~> 1.10"
+
+gem "devise-bootstrap5", "~> 0.1.3"
