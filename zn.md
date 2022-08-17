@@ -24,3 +24,5 @@
     rails db:migrate
 
 ## creating custom scaffold
+
+## create scaffold for

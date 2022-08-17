@@ -1,0 +1,13 @@
+<h3>
+  <em class="fa fa-pencil text-success"></em> &nbsp; <%= t('new' + ' ' + singular_table_name) %>
+</h3>
+
+<div class="card card-default">
+  <div class="card-body">
+    <%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
+  </div>
+  <div class="card-footer">
+    <%= link_to t('back_to_index'), <%= plural_table_name %>_path %>
+  </div>
+</div>
+
