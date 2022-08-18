@@ -1,24 +1,46 @@
-# README
+## How to use
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### clone from github
 
-Things you may want to cover:
+    git clone https://github.com/diogowernik/rails7-starter-devise-bootstrap-for-scaffold.git your_app
+    cd your_app
 
-* Ruby version
+Change the name of database at `config/database.yml`
 
-* System dependencies
+```
 
-* Configuration
+default: &default
+adapter: postgresql
+encoding: unicode
+pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-* Database creation
+development:
+<<: \*default
+database: your_app_development
 
-* Database initialization
+test:
+<<: \*default
+database: your_app_test
 
-* How to run the test suite
+production:
+<<: \*default
+database: your_app_production
+username: your_app
+password: <%= ENV["RAILS_FINANCE_DATABASE_PASSWORD"] %>
 
-* Services (job queues, cache servers, search engines, etc.)
+```
 
-* Deployment instructions
+Run the commands:
 
-* ...
+    bundle install
+    rails db:create && rails db:migrate
+    yarn
+    bin/dev
+
+Bugs known:
+
+    - Login Page doesn`t validation errors
+
+```
+
+```
